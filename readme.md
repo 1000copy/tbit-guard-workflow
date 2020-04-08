@@ -62,3 +62,27 @@ and everything else as you have it and let me know if that works for you. In thi
 	  gulp.src('package.json').pipe(gulp.dest('dist/js'));
 	});
 	gulp.task('default',gulp.series('jsmin','abc'));"# tbit-guard-workflow" 
+
+## 如何执行一组命令
+	
+	run = require('gulp-run-command').default;
+	gulp.task('buildclient', run('cmd /c cd ../client && npm run build && cmd /c cd ../server'))
+
+## 如何让uglify支持mini化ES6代码？
+
+前置一个babel转义环节？
+
+	gulp.src(['gpl/**/*.js'])
+    	 .pipe(babel({presets: ['es2015']})).pipe(uglify())
+        .pipe(gulp.dest('dist/gpl'));
+
+## 最终依赖包列表
+
+	"devDependencies": {
+	    "@babel/core": "^7.9.0",
+	    "gulp": "^4.0.2",
+	    "gulp-babel": "^8.0.0",
+	    "gulp-run-command": "0.0.10",
+	    "gulp-uglify": "^3.0.2",
+	    "gulp-uglify-es": "^2.0.0",
+	  }
