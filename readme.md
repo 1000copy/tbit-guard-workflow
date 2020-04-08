@@ -76,6 +76,8 @@ and everything else as you have it and let me know if that works for you. In thi
     	 .pipe(babel({presets: ['es2015']})).pipe(uglify())
         .pipe(gulp.dest('dist/gpl'));
 
+试过uglify-es,但是会真的把代码搞乱，逻辑错误。我这里是sequelize的sql生成就是错的。且此包官方也号称放弃。
+
 ## 最终依赖包列表
 
 	"devDependencies": {
